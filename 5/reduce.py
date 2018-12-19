@@ -26,6 +26,13 @@ def unitReduce(head, tail):
             head.append(next)
     return [head,tail]
 
+def reducePolymer(polym):
+    head = []
+    tail = polym.copy()
+    while len(tail)>0:
+        [head, tail] = unitReduce(head, tail)
+    return head
+
 def purifyElem(elem,polym):
     result = []
     for val in polym:
@@ -33,13 +40,6 @@ def purifyElem(elem,polym):
         if (diff != 0) and (diff != 32):
             result.append(val)
     return result
-
-def reducePolymer(polym):
-    head = []
-    tail = polym.copy()
-    while len(tail)>0:
-        [head, tail] = unitReduce(head, tail)
-    return head
 
 polymer = list(getElem()[0].rstrip('\n'))
 
