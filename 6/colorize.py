@@ -193,6 +193,11 @@ for area in excludeList:
     areaList2.pop(area, None)
 
 print(areaList2)
+maxArea = 0
+for area in areaList2:
+    if areaList2[area]>maxArea:
+        maxArea = areaList2[area]
 
+print(maxArea)
 p = point(271, 210)
 print(findClosestFromH(p,R))
