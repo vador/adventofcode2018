@@ -1,0 +1,35 @@
+0	setr'	addi'	bori'	banr'
+1	bani'	eqir'	eqri'	gtir'	banr'	gtri'	gtrr'	eqrr'
+2	eqir'	eqri'	gtrr'	gtir'	gtri'	eqrr'
+3	setr'	bani'	borr'	seti'	banr'
+4	eqrr'
+5	setr'	bani'	borr'	seti'	bori'	banr'
+6	eqir'	eqri'	gtrr'	gtri'
+7	gtir'	setr'
+8	setr'	mulr'	bani'	eqir'	gtrr'	muli'	gtir'	banr'	gtri'	eqrr'
+9	bani'	eqir'	eqri'	gtrr'	gtir'	seti'	banr'	gtri'	eqrr'
+10	eqir'	eqri'	gtrr'	gtir'	banr'	gtri'	eqrr'
+11	gtri'	eqrr'
+12	eqir'	gtri'	eqrr'
+13	eqir'	eqrr'	eqri'
+14	addr'	setr'	mulr'	bani'	borr'	addi'	gtrr'	muli'	gtir'	seti'	bori'	banr'	gtri'
+15	setr'	mulr'	eqir'	borr'	addi'	seti'	bori'	banr'	gtri'	eqrr'
+
+0	addi
+1	bani
+2	gtir
+3	borr
+4	eqrr
+5	bori
+6	gtrr
+7	setr
+8	muli
+9	seti
+10	banr
+11	gtri
+12	eqir
+13	eqri
+14	addr
+15	mulr
+
+addi, bani, gtir, borr, eqrr, bori, gtrr, setr, muli, seti, banr, gtri, eqir, eqri, addr, mulr

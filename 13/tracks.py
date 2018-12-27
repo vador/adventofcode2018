@@ -7,12 +7,14 @@ EAST = 3
 SYMBOLDIRECTION = {'v': SOUTH, '<': WEST, '^': NORTH, '>': EAST}
 DIRECTIONSYMBOL = {SOUTH: 'v', WEST: '<', NORTH: '^', EAST: '>'}
 
+
 def get_elem_list():
     elem_list = []
     file = open('input', 'r')
     for line in file:
         elem_list.append(line.rstrip('\n'))
     return elem_list
+
 
 class Cart:
     cartno = None
@@ -137,7 +139,7 @@ tick = 0
 collision = False
 collCart = None
 print('-------------------')
-while len(cart_list)>1:
+while len(cart_list) > 1:
     for cart in cart_list:
         cart.move(track_map)
         for cart2 in cart_list:
@@ -151,7 +153,6 @@ while len(cart_list)>1:
     cart_list.sort()
     print(cart_list)
     #print_tracks(track_map, cart_list)
-
 
     print(cart_list)
 
