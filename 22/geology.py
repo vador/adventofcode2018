@@ -2,13 +2,13 @@ import collections
 import math
 
 
-#depth= 11991
-#target= (6,797)
-depth = 510
-target = (10,10)
+depth= 11991
+target= (6,797)
+#depth = 510
+#target = (10,10)
 
-maxX = target[0]+10
-maxY = target[1]+10
+maxX = target[0]+50
+maxY = target[1]+50
 
 
 class Cavern:
@@ -24,29 +24,31 @@ class Cavern:
         self.cavern = [[-1 for x in range(self.maxX)] for y in range(self.maxY)]
         for y1 in range(self.maxY):
             for x1 in range(self.maxX):
-                self.calculate_index(x1, y1)
+                self.calculate_erosion(x1, y1)
 
-    def calculate_index(self, xx, yy):
+
+    def calculate_erosion(self, xx, yy):
         if self.cavern[yy][xx] > -1:
             return self.cavern[yy][xx]
         if (xx, yy) == (0, 0):
-            ind = 0
+            ind = self.get_erosion_value(0)
         elif (xx, yy) == target:
-            ind = 0
+            ind = self.get_erosion_value(0)
         elif yy == 0:
-            ind = xx * 16807
+            ind = self.get_erosion_value(xx * 16807)
         elif xx == 0:
-            ind = yy * 48271
+            ind = self.get_erosion_value(yy * 48271)
         else:
-            ind = (self.calculate_index(xx - 1, yy) * self.calculate_index(xx, yy - 1)) % 20183
+            #ind = (self.calculate_index(xx - 1, yy) * self.calculate_index(xx, yy - 1)) #% 20183
+            ind = self.get_erosion_value(self.cavern[yy][xx-1]*self.cavern[yy-1][xx])
         self.cavern[yy][xx] = ind
         return ind
 
-    def get_erosion_level(self, xx, yy):
-        return (self.cavern[yy][xx] + self.depth) % 20183
+    def get_erosion_value(self, geological_index):
+        return (geological_index + self.depth) % 20183
 
     def get_region_risk(self, xx, yy):
-        return self.get_erosion_level(xx, yy) % 3
+        return self.cavern[yy][xx] % 3
 
     def get_region_type(self, xx, yy):
         return ['.', '=', '|'][self.get_region_risk(xx, yy)]
@@ -57,7 +59,7 @@ class Cavern:
                 if (xx == 0 and yy== 0):
                     print("M", end='')
                 elif (xx,yy) == target:
-                    print("X", end='')
+                    print("T", end='')
                 else:
                     print(self.get_region_type(xx, yy), end='')
             print()
@@ -140,7 +142,7 @@ class Graph:
                         self.to_relax_set.add(nb)
                 if (xa, ya) == self.target and za == TORCH:
                     curShortest = self.graph[ya][xa][za][0]
-        return curShortest
+        return curShortest+1
 
     def print_path_from(self,target):
         (xx, yy) = target
@@ -173,4 +175,4 @@ print(rr)
 gg = Graph(cc, target)
 print(gg.BFS())
 print(gg.print_path_from(target))
-print(gg.graph)
+#print(gg.graph)
